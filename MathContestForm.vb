@@ -38,8 +38,10 @@ Public Class MathContestForm
 
         If NameBox.Text <> "" And ageBox.Text <> "" And StudentAnswerBox.Text <> "" And gradeBox.Text <> "" Then
             SubmitButton.Enabled = True
+            SummeryButton.Enabled = True
         Else
             SubmitButton.Enabled = False
+            SummeryButton.Enabled = False
         End If
 
         'If ageBuffer > 6 Then
@@ -100,16 +102,13 @@ Public Class MathContestForm
 
 
         End Select
-
-        If AddRadioButton.Enabled Then
-            CorrectAnswer = CInt(CDec(FirstNumberBox.Text)) + CInt(CDec(SecondNumberBox.Text))
-        ElseIf SubtractButton.Enabled Then
-            CorrectAnswer = CInt(FirstNumberBox.Text) - CInt(SecondNumberBox.Text)
-        ElseIf MultiplyButton.Enabled Then
-            CorrectAnswer = CInt(FirstNumberBox.Text) * CInt(SecondNumberBox.Text)
-        ElseIf divideButtton.Enabled Then
-            CorrectAnswer = CInt(CInt(CDec(FirstNumberBox.Text)) / CInt(CDec(SecondNumberBox.Text)))
-
+        If gradeBox.Value < 0 Or gradeBox.Value > 12 Then
+            MsgBox("This Competition is only for those who are from 1rst to 12th grade")
+            gradeBox.Value = 0
+            SubtractButton.Enabled = False
+            AddRadioButton.Enabled = False
+            MultiplyButton.Enabled = False
+            divideButtton.Enabled = False
         End If
 
 
@@ -135,10 +134,35 @@ Public Class MathContestForm
 
 
     End Sub
+    'Private Sub EvaluateIfEmptyBoxes()
+    '    If NameBox.Text = "" Then
+    '        MsgBox("Your Name is Blank. Please Enter the Name of the Contestant")
+    '        AgeAndGradeCheck()
+    '    End If
 
+    '    If gradeBox.Value < 0 Or gradeBox.Value > 12 Then
+    '        MsgBox("This Competition is only for those who are from 1rst to 12th grade")
+    '        gradeBox.Value = 0
+    '        AgeAndGradeCheck()
+
+    '    End If
+
+    'End Sub
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
-        If StudentAnswerBox.Text = ($"{CorrectAnswer}") Then
+        'If AddRadioButton.Enabled Then
+        'ElseIf SubtractButton.Enabled Then
+        'ElseIf MultiplyButton.Enabled Then
+        'ElseIf divideButtton.Enabled Then
+
+        'End If
+        EvaluateRadioButtons()
+        'EvaluateIfEmptyBoxes()
+
+        If StudentAnswerBox.Text = $"{CorrectAnswer}" Then
             CorrectRunningTotal = CorrectRunningTotal + 1
+            MsgBox($"Congradulations {NameBox.Text}! You are Correct!")
+        Else
+            MsgBox($"Incorrect")
         End If
 
         NumberOfAttempts = NumberOfAttempts + 1
@@ -147,58 +171,64 @@ Public Class MathContestForm
         RandomizeQuestions()
 
     End Sub
+    Private Sub EvaluateRadioButtons()
+        If MultiplyButton.Checked Then
+            CorrectAnswer = CInt(FirstNumberBox.Text) * CInt(SecondNumberBox.Text)
+        ElseIf SubtractButton.Checked Then
+            CorrectAnswer = CInt(CDec(FirstNumberBox.Text)) - CInt(CDec(SecondNumberBox.Text))
+        ElseIf divideButtton.Checked Then
+            CorrectAnswer = CInt(CInt(CDec(FirstNumberBox.Text)) \ CInt(CDec(SecondNumberBox.Text)))
+        Else
+            CorrectAnswer = CInt(CDec(FirstNumberBox.Text)) + CInt(CDec(SecondNumberBox.Text))
 
+        End If
+
+
+    End Sub
     Private Sub SummeryButton_Click(sender As Object, e As EventArgs) Handles SummeryButton.Click
-        MsgBox($"{NameBox.Text} has Answered {CorrectRunningTotal} out of {NumberOfAttempts} Correct")
+
+        MsgBox($"{NameBox.Text} {vbNewLine} Grade {gradeBox.Text} {vbNewLine} Age {ageBox.Text} {vbNewLine} Has Answered {CorrectRunningTotal} out of {NumberOfAttempts} Correct")
+        AgeAndGradeCheck()
+        ChecktextBoxes()
     End Sub
 
     Private Sub StudentAnswerBox_TextChanged(sender As Object, e As EventArgs) Handles StudentAnswerBox.TextChanged
         SubmitButton.Enabled = True
+        SummeryButton.Enabled = True
     End Sub
 
+    Private Sub AddRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AddRadioButton.CheckedChanged
+        CorrectAnswer = CInt(CDec(FirstNumberBox.Text)) + CInt(CDec(SecondNumberBox.Text))
+
+    End Sub
+
+    Private Sub SubtractButton_CheckedChanged(sender As Object, e As EventArgs) Handles SubtractButton.CheckedChanged
+        CorrectAnswer = CInt(CDec(FirstNumberBox.Text)) - CInt(CDec(SecondNumberBox.Text))
+
+    End Sub
+
+    Private Sub MultiplyButton_CheckedChanged(sender As Object, e As EventArgs) Handles MultiplyButton.CheckedChanged
+        CorrectAnswer = CInt(FirstNumberBox.Text) * CInt(SecondNumberBox.Text)
+
+    End Sub
+
+    Private Sub divideButtton_CheckedChanged(sender As Object, e As EventArgs) Handles divideButtton.CheckedChanged
+        CorrectAnswer = CInt(CInt(CDec(FirstNumberBox.Text)) / CInt(CDec(SecondNumberBox.Text)))
+
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        NameBox.Clear()
+        ageBox.Value = 0
+        gradeBox.Value = 0
+        StudentAnswerBox.Clear()
+        NumberOfAttempts = 0
+        CorrectRunningTotal = 0
+        AgeAndGradeCheck()
+        ChecktextBoxes()
 
 
+    End Sub
 
-
-
-
-
-
-
-
-    'Private Sub Namebox_TextChanged(sender As Object, e As EventArgs) Handles NameBox.TextChanged
-    '    Static nameCheck As Boolean
-    '    nameCheck = True
-    'End Sub
-
-
-    'Private Sub AgeBox_TextChanged(sender As Object, e As EventArgs) Handles AgeBox.TextChanged
-    '    Static ageCheck As Boolean
-    '    ageCheck = True
-    'End Sub
-
-    'Private Sub GradeBox_TextChanged(sender As Object, e As EventArgs) Handles GradeBox.TextChanged
-    '    Static ageCheck As Boolean
-    '    ageCheck = True
-    'End Sub
-
-    'Sub EvaluateTextBoxes()
-    '    If NameBox.Text <> "" Or AgeBox.Text <> "" Then
-    '        SubmitButton.Enabled = True
-    '    Else
-    '        SubmitButton.Enabled = False
-
-
-
-    '    End If
-
-
-    'End Sub
-
-    'Private Sub TextBoxEvents_Leave(sender As Object, e As EventArgs) Handles GradeBox.Leave, NameBox.Leave, AgeBox.Leave
-    '    EvaluateTextBoxes()
-
-
-    'End Sub
 
 End Class
