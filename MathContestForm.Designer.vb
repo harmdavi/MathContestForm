@@ -70,7 +70,8 @@ Partial Class MathContestForm
         Me.FirstNumberBox.Name = "FirstNumberBox"
         Me.FirstNumberBox.ReadOnly = True
         Me.FirstNumberBox.Size = New System.Drawing.Size(250, 31)
-        Me.FirstNumberBox.TabIndex = 1
+        Me.FirstNumberBox.TabIndex = 50
+        Me.FirstNumberBox.TabStop = False
         '
         'SecondNumberBox
         '
@@ -78,14 +79,15 @@ Partial Class MathContestForm
         Me.SecondNumberBox.Name = "SecondNumberBox"
         Me.SecondNumberBox.ReadOnly = True
         Me.SecondNumberBox.Size = New System.Drawing.Size(250, 31)
-        Me.SecondNumberBox.TabIndex = 2
+        Me.SecondNumberBox.TabIndex = 51
+        Me.SecondNumberBox.TabStop = False
         '
         'StudentAnswerBox
         '
         Me.StudentAnswerBox.Location = New System.Drawing.Point(29, 264)
         Me.StudentAnswerBox.Name = "StudentAnswerBox"
         Me.StudentAnswerBox.Size = New System.Drawing.Size(250, 31)
-        Me.StudentAnswerBox.TabIndex = 3
+        Me.StudentAnswerBox.TabIndex = 7
         '
         'StudentInformationBox
         '
@@ -108,14 +110,14 @@ Partial Class MathContestForm
         Me.ageBox.Maximum = New Decimal(New Integer() {200, 0, 0, 0})
         Me.ageBox.Name = "ageBox"
         Me.ageBox.Size = New System.Drawing.Size(110, 31)
-        Me.ageBox.TabIndex = 18
+        Me.ageBox.TabIndex = 1
         '
         'gradeBox
         '
         Me.gradeBox.Location = New System.Drawing.Point(463, 88)
         Me.gradeBox.Name = "gradeBox"
         Me.gradeBox.Size = New System.Drawing.Size(110, 31)
-        Me.gradeBox.TabIndex = 17
+        Me.gradeBox.TabIndex = 2
         '
         'Label6
         '
@@ -202,7 +204,7 @@ Partial Class MathContestForm
         Me.AddRadioButton.Location = New System.Drawing.Point(39, 27)
         Me.AddRadioButton.Name = "AddRadioButton"
         Me.AddRadioButton.Size = New System.Drawing.Size(81, 29)
-        Me.AddRadioButton.TabIndex = 6
+        Me.AddRadioButton.TabIndex = 3
         Me.AddRadioButton.TabStop = True
         Me.AddRadioButton.Text = "Add"
         Me.AddRadioButton.UseVisualStyleBackColor = True
@@ -213,7 +215,7 @@ Partial Class MathContestForm
         Me.SubtractButton.Location = New System.Drawing.Point(39, 87)
         Me.SubtractButton.Name = "SubtractButton"
         Me.SubtractButton.Size = New System.Drawing.Size(123, 29)
-        Me.SubtractButton.TabIndex = 7
+        Me.SubtractButton.TabIndex = 4
         Me.SubtractButton.TabStop = True
         Me.SubtractButton.Text = "Subtract"
         Me.SubtractButton.UseVisualStyleBackColor = True
@@ -224,7 +226,7 @@ Partial Class MathContestForm
         Me.MultiplyButton.Location = New System.Drawing.Point(39, 156)
         Me.MultiplyButton.Name = "MultiplyButton"
         Me.MultiplyButton.Size = New System.Drawing.Size(117, 29)
-        Me.MultiplyButton.TabIndex = 8
+        Me.MultiplyButton.TabIndex = 5
         Me.MultiplyButton.TabStop = True
         Me.MultiplyButton.Text = "Multiply"
         Me.MultiplyButton.UseVisualStyleBackColor = True
@@ -235,7 +237,7 @@ Partial Class MathContestForm
         Me.divideButtton.Location = New System.Drawing.Point(39, 219)
         Me.divideButtton.Name = "divideButtton"
         Me.divideButtton.Size = New System.Drawing.Size(103, 29)
-        Me.divideButtton.TabIndex = 9
+        Me.divideButtton.TabIndex = 6
         Me.divideButtton.TabStop = True
         Me.divideButtton.Text = "Divide"
         Me.divideButtton.UseVisualStyleBackColor = True
@@ -245,7 +247,7 @@ Partial Class MathContestForm
         Me.SubmitButton.Location = New System.Drawing.Point(795, 99)
         Me.SubmitButton.Name = "SubmitButton"
         Me.SubmitButton.Size = New System.Drawing.Size(240, 93)
-        Me.SubmitButton.TabIndex = 10
+        Me.SubmitButton.TabIndex = 8
         Me.SubmitButton.Text = "Submit"
         Me.SubmitButton.UseVisualStyleBackColor = True
         '
@@ -254,7 +256,7 @@ Partial Class MathContestForm
         Me.ClearButton.Location = New System.Drawing.Point(795, 215)
         Me.ClearButton.Name = "ClearButton"
         Me.ClearButton.Size = New System.Drawing.Size(240, 93)
-        Me.ClearButton.TabIndex = 11
+        Me.ClearButton.TabIndex = 9
         Me.ClearButton.Text = "Clear"
         Me.ClearButton.UseVisualStyleBackColor = True
         '
@@ -263,7 +265,7 @@ Partial Class MathContestForm
         Me.SummeryButton.Location = New System.Drawing.Point(795, 357)
         Me.SummeryButton.Name = "SummeryButton"
         Me.SummeryButton.Size = New System.Drawing.Size(240, 93)
-        Me.SummeryButton.TabIndex = 12
+        Me.SummeryButton.TabIndex = 10
         Me.SummeryButton.Text = "SummeryButton"
         Me.SummeryButton.UseVisualStyleBackColor = True
         '
@@ -272,7 +274,7 @@ Partial Class MathContestForm
         Me.ExitButton.Location = New System.Drawing.Point(795, 487)
         Me.ExitButton.Name = "ExitButton"
         Me.ExitButton.Size = New System.Drawing.Size(240, 93)
-        Me.ExitButton.TabIndex = 13
+        Me.ExitButton.TabIndex = 11
         Me.ExitButton.Text = "Exit"
         Me.ExitButton.UseVisualStyleBackColor = True
         '

@@ -1,10 +1,16 @@
 ﻿
+
+'David Harmon
+'RCET0265
+'Spring 2020
+'Math Contest Form
+
+'https://github.com/harmdavi/MathContestF
+
+
 Option Strict On
 Option Explicit On
 Option Compare Text
-
-
-
 Public Class MathContestForm
     Dim nameCheck As Boolean
     Dim ageCheck As Boolean
